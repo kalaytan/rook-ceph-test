@@ -1,0 +1,19 @@
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  cephVersion:
+    image: ceph/ceph:v16.2.4
+  resources:
+    osd:
+      limits:
+        cpu: "1"
+        memory: "2Gi"
+      requests:
+        cpu: "1"
+        memory: "1Gi"
+  storage:
+    useAllDevices: false
+    deviceFilter: ^sd[b-c]
